@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <ThingDef ParentName="BaseMechanoidWalker">
+        <defName>REP_Mech_Reaper</defName>
+        <label>Reaper</label>
+        <description>An upgraded version from the older scyther model , made to be robust from anything unlike the scyther that can easily go down , this model was nicknamed reaper due to how effective it was on the battlefield with its strong shield , heavy armor and blades sharper than the legendary thrumbo horn.</description>
+        <tools>
+            <li>
+                <label>left blade</label>
+                <capacities>
+                    <li>Cut</li>
+                    <li>Stab</li>
+                </capacities>
+                <power>30</power>
+                <cooldownTime>2</cooldownTime>
+                <linkedBodyPartsGroup>LeftBlade</linkedBodyPartsGroup>
+                <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+                <label>right blade</label>
+                <capacities>
+                    <li>Cut</li>
+                    <li>Stab</li>
+                </capacities>
+                <power>30</power>
+                <cooldownTime>2</cooldownTime>
+                <linkedBodyPartsGroup>RightBlade</linkedBodyPartsGroup>
+                <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+                <label>head</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+                <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+                <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+                <chanceFactor>0.2</chanceFactor>
+            </li>
+        </tools>
+        <race>
+            <body>REP_reaper</body>
+            <baseHealthScale>2.50</baseHealthScale>
+            <soundMeleeHitPawn>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_MechanoidSlash_HitBuilding</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+        </race>
+        <comps>
+            <li Class="CompProperties_ProjectileInterceptor">
+                <radius>1</radius>
+                <interceptGroundProjectiles>true</interceptGroundProjectiles>
+                <color>(0.4, 0.4, 0.4)</color>
+                <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+                <activeSound>BulletShield_Ambience</activeSound>
+                <hitPoints>150</hitPoints>
+                <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+                <chargeDurationTicks>5400</chargeDurationTicks><!-- 90s -->
+                <drawWithNoSelection>True</drawWithNoSelection>
+                <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+                <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+            </li>
+        </comps>
+        <statBases>
+            <BandwidthCost MayRequire="Ludeon.Rimworld.Biotech">2</BandwidthCost>
+            <MoveSpeed>5.4</MoveSpeed>
+            <EnergyShieldRechargeRate>0.2</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>1.25</EnergyShieldEnergyMax>
+            <ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech">12</ControlTakingTime>
+            <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.60</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+
+    <PawnKindDef ParentName="BaseMechanoidKind">
+        <defName>REP_Mech_Reaper</defName>
+        <label>Reaper</label>
+        <race>REP_Mech_Reaper</race>
+        <combatPower>200</combatPower>
+        <lifeStages>
+            <li MayRequire="Ludeon.Rimworld.Biotech">
+                <bodyGraphicData>
+                    <texPath>Things/Pawn/Mechanoid/Reaper/Reaper</texPath>
+                    <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Reaper</maskPath>
+                    <shaderType>CutoutWithOverlay</shaderType>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>1.5</drawSize>
+                    <shadowData>
+                        <volume>(0.4, 0.8, 0.4)</volume>
+                    </shadowData>
+                </bodyGraphicData>
+            </li>
+            <li>
+                <bodyGraphicData>
+                    <texPath>Things/Pawn/Mechanoid/Reaper/Reaper</texPath>
+                    <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Reaper</maskPath>
+                    <shaderType>CutoutWithOverlay</shaderType>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>1.5</drawSize>
+                    <shadowData>
+                        <volume>(0.4, 0.8, 0.4)</volume>
+                    </shadowData>
+                </bodyGraphicData>
+            </li>
+        </lifeStages>
+        <weaponMoney>0~0</weaponMoney>
+        <defendPointRadius>0</defendPointRadius>
+        <weaponTags>
+        </weaponTags>
+        <techHediffsChance>1</techHediffsChance>
+        <techHediffsMoney>9999~9999</techHediffsMoney>
+    </PawnKindDef>
+</Defs>
